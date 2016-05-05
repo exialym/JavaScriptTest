@@ -233,8 +233,14 @@
 // }
 // var a = createFunctions();
 // alert(a[1]());   //10
-//////////////////////////////////////////////////////////
+//////////////////////////窗口位置////////////////////////////////
 // var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
 // var topPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
 // alert(leftPos + "" + topPos);
 // window.moveTo(200,300);
+////////////////////////Location对象//////////////////////////////
+// location.assign("http://www.baidu.com");
+// location.replace("http://www.baidu.com/");
+////////////////////////////navigator对象///////////////////////////////////
+//navigator.registerContentHandler("application/rss+xml",     "http://www.somereader.com?feed=%s", "Some Reader");
+alert(history.length);
