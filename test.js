@@ -242,7 +242,7 @@
 // location.assign("http://www.baidu.com");
 // location.replace("http://www.baidu.com/");
 ////////////////////////////navigator对象,history对象///////////////////////////////////
-//navigator.registerContentHandler("application/rss+xml",     "http://www.somereader.com?feed=%s", "Some Reader");
+//navigator.registerContentHandler("application/rss+xml", "http://www.somereader.com?feed=%s", "Some Reader");
 //alert(history.length);
 //////////////////////////////////浏览器能力检测//////////////////////////
 // function isHostMethod(object, property) {
@@ -262,6 +262,7 @@
 // }();
 ////////////////////////////用户代理字符串检测///////////////////////////
 var client = function(){
+    //识别呈现引擎
     var engine = {
         ie: 0,
         gecko: 0,
@@ -270,6 +271,7 @@ var client = function(){
         opera: 0,
         ver: null
     };
+    //识别浏览器
     var browser = {
         ie: 0,
         firefox: 0,
@@ -277,7 +279,9 @@ var client = function(){
         konq: 0,
         opera: 0,
         chrome: 0,
-        ver: null     };
+        ver: null
+    };
+    //识别平台
     var system = {
         win: false,
         mac: false,
@@ -293,19 +297,24 @@ var client = function(){
         ps: false
     };
     var ua = navigator.userAgent;
+    //Opera是会伪装的，所以先检查它
     if (window.opera){
         engine.ver = browser.ver = window.opera.version();
         engine.opera = browser.opera = parseFloat(engine.ver);
+    //在WebKit中包含了Gecko和Khtml，所以应该先检查它
     } else if (/AppleWebKit\/(\S+)/.test(ua)){
         engine.ver = RegExp["$1"];
         engine.webkit = parseFloat(engine.ver);
+        //chrome使用Webkit
         if (/Chrome\/(\S+)/.test(ua)){
             browser.ver = RegExp["$1"];
             browser.chrome = parseFloat(browser.ver);
+        //safari使用webkit
         } else if (/Version\/(\S+)/.test(ua)){
             browser.ver = RegExp["$1"];
             browser.safari = parseFloat(browser.ver);
         } else {
+            //safari3以下不能用上面的代码检测版本，使用下面的吧
             var safariVersion = 1;
             if (engine.webkit < 100){
                 safariVersion = 1;
@@ -318,22 +327,29 @@ var client = function(){
             }
             browser.safari = browser.ver = safariVersion;
         }
+    //在Khtml中包含了Gecko，所以应该先检查它
     } else if (/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;]+)/.test(ua)){
         engine.ver = browser.ver = RegExp["$1"];
         engine.khtml = browser.konq = parseFloat(engine.ver);
+    //最后检测Khtml
     } else if (/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
         engine.ver = RegExp["$1"];
         engine.gecko = parseFloat(engine.ver);
+        //是不是Firefox
         if (/Firefox\/(\S+)/.test(ua)){
             browser.ver = RegExp["$1"];
             browser.firefox = parseFloat(browser.ver);
         }
+    //IE的特征比较好检测
     } else if (/MSIE ([^;]+)/.test(ua)){
         engine.ver = browser.ver = RegExp["$1"];
         engine.ie = browser.ie = parseFloat(engine.ver);
     }
     browser.ie = engine.ie;
     browser.opera = engine.opera;
+    
+
+    //识别平台
     var p = navigator.platform;
     system.win = p.indexOf("Win") == 0;
     system.mac = p.indexOf("Mac") == 0;
@@ -398,3 +414,4 @@ var client = function(){
         system:system
     };
 }();
+alert(client.browser.firefox);
