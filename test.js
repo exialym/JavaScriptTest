@@ -241,6 +241,22 @@
 ////////////////////////Location对象//////////////////////////////
 // location.assign("http://www.baidu.com");
 // location.replace("http://www.baidu.com/");
-////////////////////////////navigator对象///////////////////////////////////
+////////////////////////////navigator对象,history对象///////////////////////////////////
 //navigator.registerContentHandler("application/rss+xml",     "http://www.somereader.com?feed=%s", "Some Reader");
-alert(history.length);
+//alert(history.length);
+//////////////////////////////////浏览器能力检测//////////////////////////
+// function isHostMethod(object, property) {
+//     var t = typeof object[property];
+//     return t=='function' || (!!(t=='object' && object[property])) || t=='unknown';
+// }
+// alert(isHostMethod("asdf","replace"));
+////////////////////////////////浏览器bug检测///////////////////////////
+var hasDontEnumQuirk = function(){
+    var o = { toString : function(){} };
+    for (var prop in o) {
+        if (prop == "toString"){
+            return false;
+        }
+    }
+    return true;
+}();
