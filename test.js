@@ -432,5 +432,14 @@
 // alert(childListArray.length);  //8
 // //alert($.fn.jquery);
 ///////////////////////////////////////////////////Document类型///////////
-alert(document.doctype.name);
-document.write("<strong>" + (new Date()).toString() + "</strong>");
+// alert(document.doctype.name);
+// document.write("<strong>" + (new Date()).toString() + "</strong>");
+// window.onload = function(){
+//     document.write("Hello world!");
+// };
+///////////////////////////////////////////////////Element类型////////////
+alert(Element.prototype.getAttribute);
+var div = document.createElement("div");
+div.id = "myNewDiv";
+div.className = "box";
+document.body.appendChild(div);
