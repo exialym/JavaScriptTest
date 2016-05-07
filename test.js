@@ -415,19 +415,22 @@
 //     };
 // }();
 // alert(client.browser.firefox);
-/////////////////////////////////////////////////node节点类型///////
-var htmlNode = document.getElementsByTagName("html")[0];
+// /////////////////////////////////////////////////node节点类型///////
+// var htmlNode = document.getElementsByTagName("html")[0];
 // if (htmlNode.nodeType == 1){
 //     alert("Node is an element.");
 //     alert(htmlNode.nodeName);
 //     alert(htmlNode.nodeValue);
 // }
-var bodyNode = document.getElementsByTagName("body")[0];
-var childList = bodyNode.childNodes;
-var childListArray = Array.prototype.slice.call(childList,0);
-alert(childList.length);  //8
-alert(childListArray.length);  //8
-bodyNode.removeChild(bodyNode.lastChild);
-alert(childList.length);  //7
-alert(childListArray.length);  //8
-//alert($.fn.jquery);
+// var bodyNode = document.getElementsByTagName("body")[0];
+// var childList = bodyNode.childNodes;
+// var childListArray = Array.prototype.slice.call(childList,0);
+// alert(childList.length);  //8
+// alert(childListArray.length);  //8
+// bodyNode.removeChild(bodyNode.lastChild);
+// alert(childList.length);  //7
+// alert(childListArray.length);  //8
+// //alert($.fn.jquery);
+///////////////////////////////////////////////////Document类型///////////
+alert(document.doctype.name);
+document.write("<strong>" + (new Date()).toString() + "</strong>");
