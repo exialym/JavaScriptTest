@@ -438,8 +438,29 @@
 //     document.write("Hello world!");
 // };
 ///////////////////////////////////////////////////Element类型////////////
-alert(Element.prototype.getAttribute);
-var div = document.createElement("div");
-div.id = "myNewDiv";
-div.className = "box";
-document.body.appendChild(div);
+// alert(Element.prototype.getAttribute);
+// var div = document.createElement("div");
+// div.id = "myNewDiv";
+// div.className = "box";
+// document.body.appendChild(div);
+//////////////////////////////////////Text类型////////////////////////
+var element = document.createElement("div");
+element.className = "message";
+//这里的大于小于号之类的会被转义，不会被解释为元素标签
+var textNode = document.createTextNode("<strong>Hello</strong> world!");
+element.appendChild(textNode);
+//多个相邻文本节点会被拼接
+var anotherTextNode = document.createTextNode("Yippee!");
+element.appendChild(anotherTextNode);
+document.body.appendChild(element);
+//多个相邻节点导致混乱
+alert(element.childNodes.length);    //2
+//这个方法合并相邻文本节点
+element.normalize();
+alert(element.childNodes.length);    //1
+alert(element.firstChild.nodeValue);
+//拆分节点
+var newNode = element.firstChild.splitText(5);
+alert(element.firstChild.nodeValue); //"Hello"
+alert(newNode.nodeValue); //" world!"
+alert(element.childNodes.length); //2
