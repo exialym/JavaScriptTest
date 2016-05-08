@@ -582,7 +582,20 @@
 // div.innerHTML = "<input type=\"hidden\"><style type=\"text/css\">body {background-color: red; }</style>";
 // div.insertAdjacentHTML("beforeend", "<p>Hello world!</p>");
 //***********************************scrollIntoView()
-var button = document.getElementById("myButton");
-//button.focus();效果一样
-button.scrollIntoView();
-//*****************************
+// var button = document.getElementById("myButton");
+// //button.focus();效果一样
+// button.scrollIntoView();
+//*****************************专有拓展
+// alert(document.documentMode);
+// alert(document.documentElement.contains(document.body)); //true
+// function getInnerText(element){
+//     return (typeof element.textContent == "string") ?
+//         element.textContent : element.innerText;
+// }
+// function setInnerText(element, text){
+//     if (typeof element.textContent == "string"){
+//         element.textContent = text;
+//     } else {
+//         element.innerText = text;
+//     }
+// }
