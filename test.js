@@ -532,21 +532,57 @@
 // }
 // loadStyleString("body{background-color:red}");
 ///////////////////////////////////////////nodeList的注意事项/////////////
-//在这段代码中每次增加一个div节点，divs中的元素也会同时增加一个，divs.length永远会比当前的循环大,这个for循环永远执行不完
+// //在这段代码中每次增加一个div节点，divs中的元素也会同时增加一个，divs.length永远会比当前的循环大,这个for循环永远执行不完
+// // var divs = document.getElementsByTagName("div"),
+// //     i,
+// //     div;
+// // var divtemp = divs;
+// // for (i=0; i < divtemp.length; i++){
+// //     div = document.createElement("div");
+// //     document.body.appendChild(div);
+// // }
+// // 这样就不会有问题了
 // var divs = document.getElementsByTagName("div"),
 //     i,
+//     len,
 //     div;
-// var divtemp = divs;
-// for (i=0; i < divtemp.length; i++){
+// for (i=0, len=divs.length; i < len; i++){
 //     div = document.createElement("div");
 //     document.body.appendChild(div);
 // }
-// 这样就不会有问题了
-var divs = document.getElementsByTagName("div"),
-    i,
-    len,
-    div;
-for (i=0, len=divs.length; i < len; i++){
-    div = document.createElement("div");
-    document.body.appendChild(div);
-}
+////////////////////////////////////////焦点管理//////////////////
+// var button = document.getElementById("myButton");
+// button.focus();
+// alert(document.activeElement === button);   //true
+// alert(document.hasFocus());  //true
+////////////////////////////////////////字符集//////////////////
+// alert(document.charset);
+// alert(document.defaultCharset);
+//************************************自定义属性
+// var div = document.getElementById("myDiv");
+// var appId = div.dataset.appId;
+// var myName = div.dataset.myname;
+// div.dataset.appId = 23456;
+// div.dataset.myname = "Michael";
+// alert(div.dataset.myname);
+// alert(div.dataset.appId);
+// //就算原来没有写在DOM里的也可以设置,会同步到DOM里
+// div.dataset.haha = "hahaha";
+// alert(div.dataset.haha);
+//***********************************标记插入
+// alert(document.body.innerHTML);
+// var div = document.getElementById("myDiv");
+// div.innerHTML = "<p>balalala</p><button>balalala</button>";
+// //style元素是被支持的。在IE8中有些特殊，要插入在有作用域的元素后。
+// //失败
+// //div.innerHTML = "<style type=\"text/css\">body {background-color: red; }</style>";
+// //成功
+// div.innerHTML = "_<style type=\"text/css\">body {background-color: red; }</style>";
+// //成功
+// div.innerHTML = "<input type=\"hidden\"><style type=\"text/css\">body {background-color: red; }</style>";
+// div.insertAdjacentHTML("beforeend", "<p>Hello world!</p>");
+//***********************************scrollIntoView()
+var button = document.getElementById("myButton");
+//button.focus();效果一样
+button.scrollIntoView();
+//*****************************
