@@ -465,13 +465,24 @@
 // alert(newNode.nodeValue); //" world!"
 // alert(element.childNodes.length); //2
 //////////////////////////////////////DocumentFragment类型////////////////////////
-var fragment = document.createDocumentFragment();
+// var fragment = document.createDocumentFragment();
+// var ul = document.getElementById("myList");
+// var li = null;
+// for (var i=0; i < 3; i++){
+//     li = document.createElement("li");
+//     li.appendChild(document.createTextNode("Item " + (i+1)));
+//     fragment.appendChild(li);
+// }
+// //当你将一个文档片段添加到文档中时,会把文档片段中的所有节点添加至文档的当前位置,而文档片段本身永远不会出现在文档中
+// ul.appendChild(fragment);
+//////////////////////////////////////Attr类型////////////////////////
 var ul = document.getElementById("myList");
-var li = null;
-for (var i=0; i < 3; i++){
-    li = document.createElement("li");
-    li.appendChild(document.createTextNode("Item " + (i+1)));
-    fragment.appendChild(li);
-}
-//当你将一个文档片段添加到文档中时,会把文档片段中的所有节点添加至文档的当前位置,而文档片段本身永远不会出现在文档中
-ul.appendChild(fragment);
+//特性节点不会出现在文档树中
+alert(ul.childNodes.length);
+alert(ul.attributes["class"].value);
+//alert(ul.attributes["align"].value);会报错
+//添加特性节点
+var attr = document.createAttribute("align");
+attr.value = "left";
+ul.setAttributeNode(attr);
+alert(ul.attributes["align"].value);
