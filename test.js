@@ -444,23 +444,34 @@
 // div.className = "box";
 // document.body.appendChild(div);
 //////////////////////////////////////Text类型////////////////////////
-var element = document.createElement("div");
-element.className = "message";
-//这里的大于小于号之类的会被转义，不会被解释为元素标签
-var textNode = document.createTextNode("<strong>Hello</strong> world!");
-element.appendChild(textNode);
-//多个相邻文本节点会被拼接
-var anotherTextNode = document.createTextNode("Yippee!");
-element.appendChild(anotherTextNode);
-document.body.appendChild(element);
-//多个相邻节点导致混乱
-alert(element.childNodes.length);    //2
-//这个方法合并相邻文本节点
-element.normalize();
-alert(element.childNodes.length);    //1
-alert(element.firstChild.nodeValue);
-//拆分节点
-var newNode = element.firstChild.splitText(5);
-alert(element.firstChild.nodeValue); //"Hello"
-alert(newNode.nodeValue); //" world!"
-alert(element.childNodes.length); //2
+// var element = document.createElement("div");
+// element.className = "message";
+// //这里的大于小于号之类的会被转义，不会被解释为元素标签
+// var textNode = document.createTextNode("<strong>Hello</strong> world!");
+// element.appendChild(textNode);
+// //多个相邻文本节点会被拼接
+// var anotherTextNode = document.createTextNode("Yippee!");
+// element.appendChild(anotherTextNode);
+// document.body.appendChild(element);
+// //多个相邻节点导致混乱
+// alert(element.childNodes.length);    //2
+// //这个方法合并相邻文本节点
+// element.normalize();
+// alert(element.childNodes.length);    //1
+// alert(element.firstChild.nodeValue);
+// //拆分节点
+// var newNode = element.firstChild.splitText(5);
+// alert(element.firstChild.nodeValue); //"Hello"
+// alert(newNode.nodeValue); //" world!"
+// alert(element.childNodes.length); //2
+//////////////////////////////////////DocumentFragment类型////////////////////////
+var fragment = document.createDocumentFragment();
+var ul = document.getElementById("myList");
+var li = null;
+for (var i=0; i < 3; i++){
+    li = document.createElement("li");
+    li.appendChild(document.createTextNode("Item " + (i+1)));
+    fragment.appendChild(li);
+}
+//当你将一个文档片段添加到文档中时,会把文档片段中的所有节点添加至文档的当前位置,而文档片段本身永远不会出现在文档中
+ul.appendChild(fragment);
