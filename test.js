@@ -476,13 +476,77 @@
 // //当你将一个文档片段添加到文档中时,会把文档片段中的所有节点添加至文档的当前位置,而文档片段本身永远不会出现在文档中
 // ul.appendChild(fragment);
 //////////////////////////////////////Attr类型////////////////////////
-var ul = document.getElementById("myList");
-//特性节点不会出现在文档树中
-alert(ul.childNodes.length);
-alert(ul.attributes["class"].value);
-//alert(ul.attributes["align"].value);会报错
-//添加特性节点
-var attr = document.createAttribute("align");
-attr.value = "left";
-ul.setAttributeNode(attr);
-alert(ul.attributes["align"].value);
+// var ul = document.getElementById("myList");
+// //特性节点不会出现在文档树中
+// alert(ul.childNodes.length);
+// alert(ul.attributes["class"].value);
+// //alert(ul.attributes["align"].value);会报错
+// //添加特性节点
+// var attr = document.createAttribute("align");
+// attr.value = "left";
+// ul.setAttributeNode(attr);
+// alert(ul.attributes["align"].value);
+/////////////////////////////////////////////动态脚本//////////////////////
+// //外部
+// function loadScript(url){
+//     var script = document.createElement("script");
+//     script.type = "text/javascript";
+//     script.src = url;
+//     document.body.appendChild(script);
+// }
+// //内部
+// function loadScriptString(code){
+//     var script = document.createElement("script");
+//     script.type = "text/javascript";
+//     try {
+//         //由于IE将script视作一个特殊的元素，不允许DOM访问其子节点，这样在IE中会报错
+//         script.appendChild(document.createTextNode(code));
+//     } catch (ex){
+//         //直接设置text属性有的浏览器不支持，但IE肯定支持
+//         script.text = code;
+//     }
+//     document.body.appendChild(script);
+// }
+// loadScriptString("function sayHi(){alert('hi');}");
+/////////////////////////////////////////////动态样式//////////////////////
+// //外部
+// function loadStyles(url){
+//     var link = document.createElement("link");
+//     link.rel = "stylesheet";
+//     link.type = "text/css";
+//     link.href = url;
+//     var head = document.getElementsByTagName("head")[0];
+//     head.appendChild(link);
+// }
+// //内部
+// function loadStyleString(css){
+//     var style = document.createElement("style");
+//     style.type = "text/css";
+//     try{
+//         style.appendChild(document.createTextNode(css));
+//     } catch (ex){
+//         style.styleSheet.cssText = css;
+//     }
+//     var head = document.getElementsByTagName("head")[0];
+//     head.appendChild(style);
+// }
+// loadStyleString("body{background-color:red}");
+///////////////////////////////////////////nodeList的注意事项/////////////
+//在这段代码中每次增加一个div节点，divs中的元素也会同时增加一个，divs.length永远会比当前的循环大,这个for循环永远执行不完
+// var divs = document.getElementsByTagName("div"),
+//     i,
+//     div;
+// var divtemp = divs;
+// for (i=0; i < divtemp.length; i++){
+//     div = document.createElement("div");
+//     document.body.appendChild(div);
+// }
+// 这样就不会有问题了
+var divs = document.getElementsByTagName("div"),
+    i,
+    len,
+    div;
+for (i=0, len=divs.length; i < len; i++){
+    div = document.createElement("div");
+    document.body.appendChild(div);
+}
