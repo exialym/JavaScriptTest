@@ -48,3 +48,9 @@
 // });
 // var newDiv = div.cloneNode(true);
 // alert(newDiv.getUserData("name"));      //"Nicholas"
+/******************************JS访问style************/
+// var myDiv = document.getElementById("myDiv");
+// myDiv.style.backgroundColor = "red";
+// myDiv.style.width = "100px";
+// myDiv.style.height = "200px";
+// myDiv.style.border = "1px solid black";
