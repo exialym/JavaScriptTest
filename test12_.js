@@ -30,4 +30,21 @@
 // alert(svg.lookupNamespaceURI("s"));
 // alert(svg.lookupPrefix("http://www.w3.org/2000/svg"));
 /*********************************defaultView属性,代表拥有此文档的窗口或框架***/
-alert(document.defaultView || document.parentWindow);
+//alert(document.defaultView || document.parentWindow);
+/*************************Node类型的新方法:isSameNode()、isEqualNode()****/
+// var div1 = document.createElement("div");
+// div1.setAttribute("class", "box");
+// var div2 = document.createElement("div");
+// div2.setAttribute("class", "box");
+// alert(div1.isSameNode(div1)); //true
+// alert(div1.isEqualNode(div2)); //true
+// alert(div1.isSameNode(div2)); //false
+/***********************Node类型的新方法:setUserData(),不过Safari和chrome都不支持貌似********/
+// var div = document.createElement("div");
+// div.setUserData("name", "Nicholas", function(operation, key, value, src, dest){
+//     if (operation == 1){
+//         dest.setUserData(key, value, function(){});
+//     }
+// });
+// var newDiv = div.cloneNode(true);
+// alert(newDiv.getUserData("name"));      //"Nicholas"
