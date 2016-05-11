@@ -62,8 +62,20 @@
 //     alert(prop + " : " + value); 
 // }
 /******************************JS访问所有计算后的CSS************/
-var myDiv = document.getElementById("myDiv");
-var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
-//IE不支持，使用currentStyle
-//var computedStyle = myDiv.currentStyle;
-alert(computedStyle.height);    // "200px" 
+// var myDiv = document.getElementById("myDiv");
+// var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+// //IE不支持，使用currentStyle
+// //var computedStyle = myDiv.currentStyle;
+// alert(computedStyle.height);    // "200px"
+/******************************JS访问样式表************/
+var sheet = null;
+for (var i=0, len=document.styleSheets.length; i < len; i++){
+    sheet = document.styleSheets[i];
+    alert(sheet.href);
+}
+function getStyleSheet(element){
+    return element.sheet || element.styleSheet;
+}
+var link = document.getElementsByTagName("link")[0]; 
+var sheet = getStyleSheet(link);
+alert(sheet.href);
