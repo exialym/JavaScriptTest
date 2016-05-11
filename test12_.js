@@ -49,8 +49,21 @@
 // var newDiv = div.cloneNode(true);
 // alert(newDiv.getUserData("name"));      //"Nicholas"
 /******************************JS访问style************/
+//style属性。它是CSSStyleDeclaration的实例，这里包含通过HTML的style特性指定的所有样式信息，**但不包含外部与内嵌样式表的样式。**样式通过属性访问，驼峰命名。
 // var myDiv = document.getElementById("myDiv");
 // myDiv.style.backgroundColor = "red";
 // myDiv.style.width = "100px";
 // myDiv.style.height = "200px";
 // myDiv.style.border = "1px solid black";
+// var prop, value, i, len;  
+// for (i=0, len=myDiv.style.length; i < len; i++){     
+//     prop = myDiv.style[i];  //myDiv.style.item(i)
+//     value = myDiv.style.getPropertyValue(prop);     
+//     alert(prop + " : " + value); 
+// }
+/******************************JS访问所有计算后的CSS************/
+var myDiv = document.getElementById("myDiv");
+var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+//IE不支持，使用currentStyle
+//var computedStyle = myDiv.currentStyle;
+alert(computedStyle.height);    // "200px" 
