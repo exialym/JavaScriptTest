@@ -107,67 +107,94 @@
 //     }
 // }
 /*************************元素位置及尺寸***************************/
-//获得元素绝对上偏移
-function getElementTop(element){
-    var actualTop = element.offsetTop;
-    var current = element.offsetParent;
-    //迭代所有父级元素，把他们的偏移都加上
-    while (current !== null){
-        actualTop += current. offsetTop;
-        current = current.offsetParent;
-    }
-    return actualTop;
+// //获得元素绝对上偏移
+// function getElementTop(element){
+//     var actualTop = element.offsetTop;
+//     var current = element.offsetParent;
+//     //迭代所有父级元素，把他们的偏移都加上
+//     while (current !== null){
+//         actualTop += current. offsetTop;
+//         current = current.offsetParent;
+//     }
+//     return actualTop;
+// }
+// //获得元素绝对左偏移
+// function getElementLeft(element){
+//     var actualLeft = element.offsetLeft;
+//     var current = element.offsetParent;
+//     while (current !== null){
+//         actualLeft += current.offsetLeft;
+//         current = current.offsetParent;
+//     }
+//     return actualLeft;
+// }
+// function getBoundingClientRect(element){
+//     var scrollTop = document.documentElement.scrollTop;
+//     var scrollLeft = document.documentElement.scrollLeft;
+//     //在支持getBoundingClientRect方法的情况下
+//     if (element.getBoundingClientRect){
+//         //这里利用了函数自身的属性，如果这个函数刚才已经执行过了。arguments.callee.offset就已经存在了
+//         //就说明这个浏览器的调整量已经设置过了，直接使用就好了。就不必执行下面这个开销比较大的代码块了
+//         if (typeof arguments.callee.offset != "number"){
+//             //利用一个新元素，将他设置在浏览器的左上角，再获取它的top值
+//             //看看这个浏览器的偏差是多少，反向减掉
+//             var temp = document.createElement("div");
+//             temp.style.cssText = "position:absolute;left:0;top:0;";
+//             document.body.appendChild(temp);
+//             arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
+//             document.body.removeChild(temp);
+//             temp = null;
+//         }
+//         var rect = element.getBoundingClientRect();
+//         var offset = arguments.callee.offset;
+//         return {
+//             left: rect.left + offset,
+//             right: rect.right + offset,
+//             top: rect.top + offset,
+//             bottom: rect.bottom + offset
+//         };
+//     //在支持getBoundingClientRect方法的情况下，使用之前的getElementLeft()函数得到left，再加加offsetWidth得到right
+//     //这个方法可能不太准确，不过谁叫你不支持getBoundingClientRect的
+//     } else {
+//         var actualLeft = getElementLeft(element);
+//         var actualTop = getElementTop(element);
+//         return {
+//             left: actualLeft - scrollLeft,
+//             right: actualLeft + element.offsetWidth - scrollLeft,
+//             top: actualTop - scrollTop,
+//             bottom: actualTop + element.offsetHeight - scrollTop
+//         }
+//     }
+// }
+// var rect = getBoundingClientRect(document.getElementById("myDiv"));
+// alert(rect.bottom);
+// alert(rect.top);
+// alert(rect.left);
+// alert(rect.right);
+/**********************************遍历DOM节点*************************/
+// var filter = {
+//     acceptNode: function(node){
+//         return node.tagName.toLowerCase() == "p" ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+//     }
+// };
+// //直接定义函数也行
+// // var filter = function(node){
+// //     return node.tagName.toLowerCase() == "p" ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+// // };
+// var iterator = document.createNodeIterator(document.documentElement, NodeFilter.SHOW_ELEMENT, filter, false);
+// //或者遍历所有节点
+// iterator = document.createNodeIterator(document, NodeFilter.SHOW_ALL, null, false);
+// var node = iterator.nextNode();
+// while (node !== null) {
+//     alert(node.tagName);
+//     node = iterator.nextNode();
+// }
+//更强大的遍历类型
+var walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, null, false);
+walker.firstChild();
+walker.nextSibling();
+var node = walker.firstChild();
+while (node !== null) {
+    alert(node.tagName);
+    node = walker.nextSibling();
 }
-//获得元素绝对左偏移
-function getElementLeft(element){
-    var actualLeft = element.offsetLeft;
-    var current = element.offsetParent;
-    while (current !== null){
-        actualLeft += current.offsetLeft;
-        current = current.offsetParent;
-    }
-    return actualLeft;
-}
-function getBoundingClientRect(element){
-    var scrollTop = document.documentElement.scrollTop;
-    var scrollLeft = document.documentElement.scrollLeft;
-    //在支持getBoundingClientRect方法的情况下
-    if (element.getBoundingClientRect){
-        //这里利用了函数自身的属性，如果这个函数刚才已经执行过了。arguments.callee.offset就已经存在了
-        //就说明这个浏览器的调整量已经设置过了，直接使用就好了。就不必执行下面这个开销比较大的代码块了
-        if (typeof arguments.callee.offset != "number"){
-            //利用一个新元素，将他设置在浏览器的左上角，再获取它的top值
-            //看看这个浏览器的偏差是多少，反向减掉
-            var temp = document.createElement("div");
-            temp.style.cssText = "position:absolute;left:0;top:0;";
-            document.body.appendChild(temp);
-            arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
-            document.body.removeChild(temp);
-            temp = null;
-        }
-        var rect = element.getBoundingClientRect();
-        var offset = arguments.callee.offset;
-        return {
-            left: rect.left + offset,
-            right: rect.right + offset,
-            top: rect.top + offset,
-            bottom: rect.bottom + offset
-        };
-    //在支持getBoundingClientRect方法的情况下，使用之前的getElementLeft()函数得到left，再加加offsetWidth得到right
-    //这个方法可能不太准确，不过谁叫你不支持getBoundingClientRect的
-    } else {
-        var actualLeft = getElementLeft(element);
-        var actualTop = getElementTop(element);
-        return {
-            left: actualLeft - scrollLeft,
-            right: actualLeft + element.offsetWidth - scrollLeft,
-            top: actualTop - scrollTop,
-            bottom: actualTop + element.offsetHeight - scrollTop
-        }
-    }
-}
-var rect = getBoundingClientRect(document.getElementById("myDiv"));
-alert(rect.bottom);
-alert(rect.top);
-alert(rect.left);
-alert(rect.right);
