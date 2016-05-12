@@ -1,6 +1,8 @@
 #highDiv{
     height:1000px;
+    background-color: #cccccc;
 }
 #myDiv{
     height:200px;
+    background-color: #2aabd2;
 }

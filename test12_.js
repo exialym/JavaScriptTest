@@ -68,14 +68,106 @@
 // //var computedStyle = myDiv.currentStyle;
 // alert(computedStyle.height);    // "200px"
 /******************************JS访问样式表************/
-var sheet = null;
-for (var i=0, len=document.styleSheets.length; i < len; i++){
-    sheet = document.styleSheets[i];
-    alert(sheet.href);
+// var sheet = null;
+// for (var i=0, len=document.styleSheets.length; i < len; i++){
+//     sheet = document.styleSheets[i];
+//     alert(sheet.href);
+// }
+// function getStyleSheet(element){
+//     return element.sheet || element.styleSheet;
+// }
+// var link = document.getElementsByTagName("link")[0]; 
+// var sheet = getStyleSheet(link);
+// alert(sheet.href);
+/*******************************样式表中的规则***************************/
+// var sheet = document.styleSheets[0]; //取得样式表
+// var rules = sheet.cssRules || sheet.rules;   //为兼容IE
+// var rule = rules[0];
+// alert(rule.selectorText);
+// alert(rule.cssText);
+// alert(rule.style.cssText);
+// alert(rule.style.height);
+// //这里的修改并不成功？？？？
+// rule.style.height = "2000ps";
+// alert(rule.style.height);
+// //添加规则
+// function insertRule(sheet, selectorText, cssText, position){
+//     if (sheet.insertRule){
+//         sheet.insertRule(selectorText + "{" + cssText + "}", position);
+//     } else if (sheet.addRule){
+//         sheet.addRule(selectorText, cssText, position);
+//     }
+// }
+// //删除规则
+// function deleteRule(sheet, index){
+//     if (sheet.deleteRule){
+//         sheet.deleteRule(index);
+//     } else if (sheet.removeRule){
+//         sheet.removeRule(index);
+//     }
+// }
+/*************************元素位置及尺寸***************************/
+//获得元素绝对上偏移
+function getElementTop(element){
+    var actualTop = element.offsetTop;
+    var current = element.offsetParent;
+    //迭代所有父级元素，把他们的偏移都加上
+    while (current !== null){
+        actualTop += current. offsetTop;
+        current = current.offsetParent;
+    }
+    return actualTop;
 }
-function getStyleSheet(element){
-    return element.sheet || element.styleSheet;
+//获得元素绝对左偏移
+function getElementLeft(element){
+    var actualLeft = element.offsetLeft;
+    var current = element.offsetParent;
+    while (current !== null){
+        actualLeft += current.offsetLeft;
+        current = current.offsetParent;
+    }
+    return actualLeft;
 }
-var link = document.getElementsByTagName("link")[0]; 
-var sheet = getStyleSheet(link);
-alert(sheet.href);
+function getBoundingClientRect(element){
+    var scrollTop = document.documentElement.scrollTop;
+    var scrollLeft = document.documentElement.scrollLeft;
+    //在支持getBoundingClientRect方法的情况下
+    if (element.getBoundingClientRect){
+        //这里利用了函数自身的属性，如果这个函数刚才已经执行过了。arguments.callee.offset就已经存在了
+        //就说明这个浏览器的调整量已经设置过了，直接使用就好了。就不必执行下面这个开销比较大的代码块了
+        if (typeof arguments.callee.offset != "number"){
+            //利用一个新元素，将他设置在浏览器的左上角，再获取它的top值
+            //看看这个浏览器的偏差是多少，反向减掉
+            var temp = document.createElement("div");
+            temp.style.cssText = "position:absolute;left:0;top:0;";
+            document.body.appendChild(temp);
+            arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
+            document.body.removeChild(temp);
+            temp = null;
+        }
+        var rect = element.getBoundingClientRect();
+        var offset = arguments.callee.offset;
+        return {
+            left: rect.left + offset,
+            right: rect.right + offset,
+            top: rect.top + offset,
+            bottom: rect.bottom + offset
+        };
+    //在支持getBoundingClientRect方法的情况下，使用之前的getElementLeft()函数得到left，再加加offsetWidth得到right
+    //这个方法可能不太准确，不过谁叫你不支持getBoundingClientRect的
+    } else {
+        var actualLeft = getElementLeft(element);
+        var actualTop = getElementTop(element);
+        return {
+            left: actualLeft - scrollLeft,
+            right: actualLeft + element.offsetWidth - scrollLeft,
+            top: actualTop - scrollTop,
+            bottom: actualTop + element.offsetHeight - scrollTop
+        }
+    }
+}
+var rect = getBoundingClientRect(document.getElementById("myDiv"));
+alert(rect.bottom);
+alert(rect.top);
+alert(rect.left);
+alert(rect.right);
