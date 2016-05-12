@@ -189,12 +189,36 @@
 //     alert(node.tagName);
 //     node = iterator.nextNode();
 // }
-//更强大的遍历类型
-var walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, null, false);
-walker.firstChild();
-walker.nextSibling();
-var node = walker.firstChild();
-while (node !== null) {
-    alert(node.tagName);
-    node = walker.nextSibling();
-}
+// //更强大的遍历类型
+// var walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, null, false);
+// walker.firstChild();
+// walker.nextSibling();
+// var node = walker.firstChild();
+// while (node !== null) {
+//     alert(node.tagName);
+//     node = walker.nextSibling();
+// }
+/************************DOM范围selectNode()、selectNodeContents()****************/
+// var range1 = document.createRange();
+// var range2 = document.createRange();
+// var div = document.getElementById("myDiv");
+// range1.selectNode(div);
+// range2.selectNodeContents(div);
+// alert(range1.startContainer.tagName); //body
+// alert(range1.endContainer.tagName); //body
+// alert(range1.commonAncestorContainer.tagName); //body
+// alert(range1.startOffset); //这个div在body中的索引哦,1
+// alert(range1.endOffset); //startOffset+1,因为只选择了一个节点
+// alert(range2.startContainer.tagName); //div
+// alert(range2.endContainer.tagName); //div
+// alert(range2.commonAncestorContainer.tagName); //div
+// alert(range2.startOffset); //永远都是0
+// alert(range2.endOffset); //子节点数目
+/************************DOM范围setStart()、setEnd()****************/
+var div = document.getElementById("myDiv");
+var textNode = div.childNodes[1].firstChild;
+var worldNode = div.lastChild;
+var range = document.createRange();
+range.setStart(textNode, 4);
+range.setEnd(worldNode, 0);
+alert(range);  //an /n 我是一个a标签~~~~~
