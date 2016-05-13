@@ -231,12 +231,32 @@
 // span.appendChild(document.createTextNode("Inserted text"));
 // range.insertNode(span);
 /************************DOM范围环绕范围****************/
-//*如果你选中的是像之前那样不完整的DOM节点。。。那这里就会添加失败。。。这里范围不会自己创建有意义的DOM结构*
+// //*如果你选中的是像之前那样不完整的DOM节点。。。那这里就会添加失败。。。这里范围不会自己创建有意义的DOM结构*
+// var div = document.getElementById("myDiv");
+// var textNode = div.childNodes[1].firstChild;
+// var range = document.createRange();
+// range.selectNode(textNode);
+// var span = document.createElement("span");
+// span.style.backgroundColor = "yellow";
+// range.surroundContents(span);
+// alert(range);
+/*************************IE专属范围*************************/
 var div = document.getElementById("myDiv");
-var textNode = div.childNodes[1].firstChild;
-var range = document.createRange();
-range.selectNode(textNode);
-var span = document.createElement("span");
-span.style.backgroundColor = "yellow";
-range.surroundContents(span);
-alert(range);
+var range = document.body.createTextRange();
+var found = range.findText("我是");
+var foundAgain = range.findText("我是", 1);
+alert(found);           //true 
+alert(range.text);
+alert(foundAgain);
+alert(range.text);
+range.moveToElementText(div);
+alert(range.text);
+alert(range.htmlText);
+/*************************IE专属范围*************************/
+var div = document.getElementById("myDiv");
+var range = document.body.createTextRange();
+var found = range.findText("我是");
+range.text = "Howdy";
+alert(range.htmlText);
+range.pasteHTML("<em>Howdy</em>");
+alert(range.htmlText);
