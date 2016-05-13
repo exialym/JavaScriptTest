@@ -5,7 +5,7 @@
         <title>Title</title>
         <link type="text/css" rel="stylesheet" href="test.css">
     </head>
-    <body>
+    <body onclick="clickBody()">
         <div id="myDiv" data-appId="12345" data-myname="Nicholas">
             哈哈哈我在div里
             <span>测试Span</span>
@@ -14,10 +14,11 @@
         <p class = "ppp">sadfasdfasf</p>
         <div id="highDiv"></div>
         <ul id="myList" class="ulList"></ul>
-        <button id="myButton">asdfasdf</button>
-
+        <button id="myButton" value="hahaah" >asdfasdf</button>
+        <input type="button" value="hahaah" onclick="alert(this.value)">
     </body>
     <script src="js/jquery.js"></script>
     <script src="test1_11.js"></script>
     <script src="test12_.js"></script>
+    <script src="test13_.js"></script>
 </html>

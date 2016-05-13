@@ -241,22 +241,22 @@
 // range.surroundContents(span);
 // alert(range);
 /*************************IE专属范围*************************/
-var div = document.getElementById("myDiv");
-var range = document.body.createTextRange();
-var found = range.findText("我是");
-var foundAgain = range.findText("我是", 1);
-alert(found);           //true 
-alert(range.text);
-alert(foundAgain);
-alert(range.text);
-range.moveToElementText(div);
-alert(range.text);
-alert(range.htmlText);
+// var div = document.getElementById("myDiv");
+// var range = document.body.createTextRange();
+// var found = range.findText("我是");
+// var foundAgain = range.findText("我是", 1);
+// alert(found);           //true
+// alert(range.text);
+// alert(foundAgain);
+// alert(range.text);
+// range.moveToElementText(div);
+// alert(range.text);
+// alert(range.htmlText);
 /*************************IE专属范围*************************/
-var div = document.getElementById("myDiv");
-var range = document.body.createTextRange();
-var found = range.findText("我是");
-range.text = "Howdy";
-alert(range.htmlText);
-range.pasteHTML("<em>Howdy</em>");
-alert(range.htmlText);
+// var div = document.getElementById("myDiv");
+// var range = document.body.createTextRange();
+// var found = range.findText("我是");
+// range.text = "Howdy";
+// alert(range.htmlText);
+// range.pasteHTML("<em>Howdy</em>");
+// alert(range.htmlText);
