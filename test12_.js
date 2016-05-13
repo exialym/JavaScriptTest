@@ -214,11 +214,29 @@
 // alert(range2.commonAncestorContainer.tagName); //div
 // alert(range2.startOffset); //永远都是0
 // alert(range2.endOffset); //子节点数目
-/************************DOM范围setStart()、setEnd()****************/
+/************************DOM范围操作****************/
+// var div = document.getElementById("myDiv");
+// var textNode = div.childNodes[1].firstChild;
+// var worldNode = div.lastChild;
+// var range = document.createRange();
+// range.setStart(textNode, 4);
+// range.setEnd(worldNode, 0);
+// alert(range);  //an /n 我是一个a标签~~~~~
+// //DOM范围操作extractContents()、 deleteContents()、cloneContents()
+// var fragment = range.cloneContents();
+// document.getElementById("myButton").parentNode.appendChild(fragment);
+// //DOM范围添加节点insertNode
+// var span = document.createElement("span");
+// span.style.color = "red";
+// span.appendChild(document.createTextNode("Inserted text"));
+// range.insertNode(span);
+/************************DOM范围环绕范围****************/
+//*如果你选中的是像之前那样不完整的DOM节点。。。那这里就会添加失败。。。这里范围不会自己创建有意义的DOM结构*
 var div = document.getElementById("myDiv");
 var textNode = div.childNodes[1].firstChild;
-var worldNode = div.lastChild;
 var range = document.createRange();
-range.setStart(textNode, 4);
-range.setEnd(worldNode, 0);
-alert(range);  //an /n 我是一个a标签~~~~~
+range.selectNode(textNode);
+var span = document.createElement("span");
+span.style.backgroundColor = "yellow";
+range.surroundContents(span);
+alert(range);
