@@ -126,15 +126,50 @@ var EventUtil = {
         }
     }
 };
-var link = document.getElementById("link");
-var body = document.body;
-var handler = function (event) {
-    event = EventUtil.getEvent(event);
-    var target = EventUtil.getTarget(event);
-    EventUtil.preventDefault(event);
-    EventUtil.stopPropagation(event);
-    alert(target);
-    alert(event.target);
-}
-link.addEventListener("click", handler, false);
-body.addEventListener("click", handler, false);
+// var link = document.getElementById("link");
+// var body = document.body;
+// var handler = function (event) {
+//     event = EventUtil.getEvent(event);
+//     var target = EventUtil.getTarget(event);
+//     EventUtil.preventDefault(event);
+//     EventUtil.stopPropagation(event);
+//     alert(target);
+//     alert(event.target);
+// }
+// link.addEventListener("click", handler, false);
+// body.addEventListener("click", handler, false);
+
+/***************************onLoad事件***************/
+// EventUtil.addHandler(window, "load", function(){
+//     var image = document.createElement("img");
+//     EventUtil.addHandler(image, "load", function(event){
+//         event = EventUtil.getEvent(event);
+//         alert(EventUtil.getTarget(event).src);
+//     });
+//     //就算不吧img添加到文档,只要设置了SRC就会开始下载
+//     //document.body.appendChild(image);
+//     image.src = "http://www.feng.com/images/icon_01.png";
+// });
+/***************************unLoad事件***************/
+// EventUtil.addHandler(window, "unload", function(event){
+//     alert("Unloaded");
+// });
+/***************************resize事件***************/
+// EventUtil.addHandler(window, "resize", function(event){
+//     alert("Resized");
+// });
+/***************************scroll事件***************/
+// EventUtil.addHandler(document.getElementById("scrollTest"), "scroll", function(event){
+//     alert("div Scrolled");
+// });
+// EventUtil.addHandler(window, "scroll", function(event){
+//     alert("window Scrolled");
+// });
+/************************焦点事件**************/
+var btn = document.getElementById("textField");
+btn.addEventListener("focus",function () {
+    console.log("qqq");
+},false);
+btn.addEventListener("focusin",function () {
+    console.log("q");
+},false);

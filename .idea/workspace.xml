@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.css" afterPath="$PROJECT_DIR$/test.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test13_.js" afterPath="$PROJECT_DIR$/test13_.js" />
     </list>
     <ignored path="test.iws" />
@@ -30,8 +30,8 @@
           <file leaf-file-name="test.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+                <state relative-caret-position="220">
+                  <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -52,8 +52,8 @@
           <file leaf-file-name="test13_.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test13_.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1015">
-                  <caret line="139" column="47" selection-start-line="128" selection-start-column="0" selection-end-line="139" selection-end-column="47" />
+                <state relative-caret-position="949">
+                  <caret line="172" column="44" selection-start-line="172" selection-start-column="44" selection-end-line="172" selection-end-column="44" />
                   <folding />
                 </state>
               </provider>
@@ -66,8 +66,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+                <state relative-caret-position="484">
+                  <caret line="22" column="42" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
@@ -94,8 +94,8 @@
       <list>
         <option value="$PROJECT_DIR$/js/test.js" />
         <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/test.css" />
         <option value="$PROJECT_DIR$/test12_.js" />
+        <option value="$PROJECT_DIR$/test.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/test13_.js" />
       </list>
@@ -295,12 +295,12 @@
       <workItem from="1463020717873" duration="8063000" />
       <workItem from="1463060588631" duration="2339000" />
       <workItem from="1463101795157" duration="9124000" />
-      <workItem from="1463205249015" duration="4734000" />
+      <workItem from="1463205249015" duration="8283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63896000" />
+    <option name="totallyTimeSpent" value="67445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-177" width="1920" height="1200" extended-state="0" />
@@ -696,14 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test12_.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -714,18 +706,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <state relative-caret-position="484">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test13_.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1015">
-          <caret line="139" column="47" selection-start-line="128" selection-start-column="0" selection-end-line="139" selection-end-column="47" />
+        <state relative-caret-position="949">
+          <caret line="172" column="44" selection-start-line="172" selection-start-column="44" selection-end-line="172" selection-end-column="44" />
           <folding />
         </state>
       </provider>
