@@ -401,3 +401,19 @@ EventUtil.addHandler(document, "contextmenu", function(event){
 // document.addEventListener("gesturestart", handleGestureEvent, false);
 // document.addEventListener("gestureend", handleGestureEvent, false);
 // document.addEventListener("gesturechange", handleGestureEvent, false);
+/*********************事件代理****************/
+EventUtil.addHandler(document, "click", function(event){
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+    switch(target.id){
+        case "myButton":
+            document.title = "I changed the document's title";
+            break;
+        case "highDiv":
+            location.href = "http://www.wrox.com";
+            break;
+        case "myDiv":
+            alert("hi");
+            break;
+    }
+});
