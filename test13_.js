@@ -118,11 +118,56 @@ var EventUtil = {
             event.returnValue = false;
         }
     },
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+    },
     stopPropagation: function(event) {
         if (event.stopPropagation) {
             event.stopPropagation();
         } else {
             event.cancelBubble = true;
+        }
+    },
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4:
+                    return 1;
+            }
+        }
+    },
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+    getWheelDelta: function(event) {
+        if (event.wheelDelta) {
+            return (client.engine.opera && client.engine.opera < 9.5 ?
+                -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
         }
     }
 };
@@ -166,10 +211,193 @@ var EventUtil = {
 //     alert("window Scrolled");
 // });
 /************************焦点事件**************/
-var btn = document.getElementById("textField");
-btn.addEventListener("focus",function () {
-    console.log("qqq");
-},false);
-btn.addEventListener("focusin",function () {
-    console.log("q");
-},false);
+// var btn = document.getElementById("textField");
+// btn.addEventListener("focus",function () {
+//     console.log("qqq");
+// },false);
+// btn.addEventListener("focusin",function () {
+//     console.log("q");
+// },false);
+/*********************鼠标事件视口坐标*****************/
+// var div = document.getElementById("myDiv");
+// EventUtil.addHandler(div, "click", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert("Client coordinates: " + event.clientX + "," + event.clientY);
+// });
+/*********************鼠标事件页面坐标*****************/
+// var div = document.getElementById("myDiv");
+// EventUtil.addHandler(div, "click", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert("Page coordinates: " + event.pageX + "," + event.pageY);
+// });
+/*********************鼠标事件修改键*****************/
+// var div = document.getElementById("myDiv");
+// EventUtil.addHandler(div, "click", function(event){
+//     event = EventUtil.getEvent(event);
+//     var keys = new Array();
+//     if (event.shiftKey){
+//         keys.push("shift");
+//     }
+//     if (event.ctrlKey){
+//         keys.push("ctrl");
+//     }
+//     if (event.altKey){
+//         keys.push("alt");
+//     }
+//     if (event.metaKey){
+//         keys.push("meta");
+//     }
+//     alert("Keys: " + keys.join(","));
+// });
+/*********************鼠标事件相关元素*****************/
+// var div = document.getElementById("myDiv");
+// EventUtil.addHandler(div, "mouseout", function(event){
+//     event = EventUtil.getEvent(event);
+//     var target = EventUtil.getTarget(event);
+//     var relatedTarget = EventUtil.getRelatedTarget(event);
+//     alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);
+// });
+/*********************鼠标事件按键检测*****************/
+// var div = document.getElementById("myDiv");
+// EventUtil.addHandler(div, "mousedown", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert(EventUtil.getButton(event));
+// });
+/*********************鼠标事件滚轮*****************/
+// EventUtil.addHandler(document, "mousewheel", function(event){
+//     event = EventUtil.getEvent(event);
+//     var delta = (client.engine.opera && client.engine.opera < 9.5 ?
+//         -event.wheelDelta : event.wheelDelta);
+//     alert(delta);
+// });
+// EventUtil.addHandler(window, "DOMMouseScroll", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert(event.detail);
+// });
+/*********************键盘事件*****************/
+// var textbox = document.getElementById("textField");
+// EventUtil.addHandler(textbox, "keyup", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert(event.keyCode);
+// });
+// EventUtil.addHandler(textbox, "keypress", function(event) {
+//     event = EventUtil.getEvent(event);
+//     alert(String.fromCharCode(EventUtil.getCharCode(event)));
+// });
+/*********************文本事件*****************/
+// var textbox = document.getElementById("textField");
+// EventUtil.addHandler(textbox, "textInput", function(event){
+//     event = EventUtil.getEvent(event);
+//     alert(event.data);
+// });
+/*********************contextmenu事件****************/
+EventUtil.addHandler(document, "contextmenu", function(event){
+    event = EventUtil.getEvent(event);
+    EventUtil.preventDefault(event);
+    var menu = document.getElementById("myMenu");
+    menu.style.left = event.pageX + "px";
+    menu.style.top = event.pageY + "px";
+    menu.style.visibility = "visible";
+});
+/*********************beforeunload事件****************/
+// EventUtil.addHandler(window, "beforeunload", function(event){
+//     event = EventUtil.getEvent(event);
+//     var message = "I'm really going to miss you if you go.";
+//     event.returnValue = message;
+//     return message;
+// });
+/*********************DOMContentLoaded事件****************/
+// EventUtil.addHandler(document, "DOMContentLoaded", function(event){
+//     alert("Content loaded");
+//     alert(event.target);//[object HTMLDocument]
+// });
+/*********************readystatechange事件****************/
+// EventUtil.addHandler(document, "readystatechange", function(event){
+//     event = EventUtil.getEvent(event);
+//     var target = EventUtil.getTarget(event);
+//     if (target.readyState == "loaded" || target.readyState == "complete"){
+//         EventUtil.removeHandler(target, "readystatechange", arguments. callee);
+//         alert("Content Loaded");
+//     }
+// });
+// (function(){
+//     var showCount = 0;
+//     EventUtil.addHandler(window, "load", function(){
+//         alert("Load fired");
+//     });
+//     EventUtil.addHandler(window, "pageshow", function(){
+//         showCount++;
+//         alert("Show has been fired " + showCount +
+//             " times. Persisted? " + event.persisted);
+//     });
+// })();
+/*********************移动Safari的屏幕旋转事件****************/
+// EventUtil.addHandler(window, "orientationchange", function(event){
+//     alert("Current orientation is " + window.orientation);
+// });
+/*********************火狐的屏幕旋转事件,有加速计的设备就可以用****************/
+// EventUtil.addHandler(window, "MozOrientation", function(event){
+//     alert("X=" + event.x + ", Y=" + event.y + ", Z=" + event.z);
+// });
+/*********************规范旋转事件deviceorientation,大多数移动浏览器实现了****************/
+// EventUtil.addHandler(window, "deviceorientation", function(event){
+//     alert("Alpha=" + event.alpha + ", Beta=" + event.beta + ", Gamma=" + event.gamma);
+// });
+/*********************规范设备运动事件devicemotion,大多数移动浏览器实现了****************/
+// EventUtil.addHandler(window, "devicemotion", function(event){
+//     var output = document.getElementById("output");
+//     if (event.rotationRate !== null){
+//         output.innerHTML += "Alpha=" + event.rotationRate.alpha + ", Beta=" +
+//             event.rotationRate.beta + ", Gamma=" +
+//             event.rotationRate.gamma;
+//     }
+// });
+/*********************移动设备触摸事件****************/
+// function handleTouchEvent(event){
+//     if (event.touches.length == 1){
+//         var output = document.getElementById("output");
+//         switch(event.type){
+//             case "touchstart":
+//                 output.innerHTML = "Touch started (" +
+//                     event.touches[0].clientX +
+//                     "," + event.touches[0].clientY + ")";
+//                 break;
+//             case "touchend":
+//                 output.innerHTML += "<br>Touch ended (" +
+//                     event.changedTouches[0].clientX + "," +
+//                     event.changedTouches[0].clientY + ")";
+//                 break;
+//             case "touchmove":
+//                 event.preventDefault(); //
+//                 output.innerHTML += "<br>Touch moved (" +
+//                     event.changedTouches[0].clientX + "," +
+//                     event.changedTouches[0].clientY + ")";
+//                 break;
+//         }
+//     }
+// }
+// EventUtil.addHandler(document, "touchstart", handleTouchEvent);
+// EventUtil.addHandler(document, "touchend", handleTouchEvent);
+// EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+/*********************移动设备手势事件(iOS)****************/
+// function handleGestureEvent(event) {
+//     var output = document.getElementById("output");
+//     switch (event.type) {
+//         case "gesturestart":
+//             output.innerHTML = "Gesture started (rotation=" + event.rotation +
+//                 ",scale=" + event.scale + ")";
+//             break;
+//         case "gestureend":
+//             output.innerHTML += "<br>Gesture ended (rotation=" + event.rotation +
+//                 ",scale=" + event.scale + ")";
+//             break;
+//         case "gesturechange":
+//             output.innerHTML += "<br>Gesture changed (rotation=" + event.rotation +
+//                 ",scale=" + event.scale + ")";
+//             break;
+//     }
+// }
+//
+// document.addEventListener("gesturestart", handleGestureEvent, false);
+// document.addEventListener("gestureend", handleGestureEvent, false);
+// document.addEventListener("gesturechange", handleGestureEvent, false);
