@@ -402,42 +402,42 @@ EventUtil.addHandler(document, "contextmenu", function(event){
 // document.addEventListener("gestureend", handleGestureEvent, false);
 // document.addEventListener("gesturechange", handleGestureEvent, false);
 /*********************事件代理****************/
-EventUtil.addHandler(document, "click", function(event){
-    event = EventUtil.getEvent(event);
-    var target = EventUtil.getTarget(event);
-    switch(target.id){
-        case "myButton":
-            document.title = "I changed the document's title";
-            break;
-        case "highDiv":
-            location.href = "http://www.wrox.com";
-            break;
-        case "myDiv":
-            alert("hi");
-            break;
-    }
-});
+// EventUtil.addHandler(document, "click", function(event){
+//     event = EventUtil.getEvent(event);
+//     var target = EventUtil.getTarget(event);
+//     switch(target.id){
+//         case "myButton":
+//             document.title = "I changed the document's title";
+//             break;
+//         case "highDiv":
+//             location.href = "http://www.wrox.com";
+//             break;
+//         case "myDiv":
+//             alert("hi");
+//             break;
+//     }
+// });
 /*********************模拟事件****************/
-var div = document.getElementById("myDiv");
-//先创建一个事件,会返回一个特定的事件对象
-var event = document.createEvent("MouseEvents");
-//用各种参数初始化事件对象
-event.initMouseEvent("click", true, true, document.defaultView, 0, 0, 0, 0, 0,
-false, false, false, false, 0, null);
-//在目标元素上触发
-div.dispatchEvent(event);
-var btn = document.getElementById("myBtn");
-//
-var event = document.createEventObject();
+// var div = document.getElementById("myDiv");
+// //先创建一个事件,会返回一个特定的事件对象
+// var event = document.createEvent("MouseEvents");
+// //用各种参数初始化事件对象
+// event.initMouseEvent("click", true, true, document.defaultView, 0, 0, 0, 0, 0,
+// false, false, false, false, 0, null);
+// //在目标元素上触发
+// div.dispatchEvent(event);
+// var btn = document.getElementById("myBtn");
+// //
+// var event = document.createEventObject();
 /*********************模拟事件IE****************/
-var btn = document.getElementById("myBtn");
-var event = document.createEventObject();
-event.screenX = 100;
-event.screenY = 0;
-event.clientX = 0;
-event.clientY = 0;
-event.ctrlKey = false;
-event.altKey = false;
-event.shiftKey = false;
-event.button = 0;
-btn.fireEvent("onclick", event);
+// var btn = document.getElementById("myBtn");
+// var event = document.createEventObject();
+// event.screenX = 100;
+// event.screenY = 0;
+// event.clientX = 0;
+// event.clientY = 0;
+// event.ctrlKey = false;
+// event.altKey = false;
+// event.shiftKey = false;
+// event.button = 0;
+// btn.fireEvent("onclick", event);
