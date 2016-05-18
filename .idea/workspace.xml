@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test15_.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test14_.js" afterPath="$PROJECT_DIR$/test14_.js" />
-    </list>
+    <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="" />
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -310,12 +305,12 @@
       <workItem from="1463536759592" duration="9810000" />
       <workItem from="1463569361283" duration="1753000" />
       <workItem from="1463574492645" duration="488000" />
-      <workItem from="1463581528514" duration="1613000" />
+      <workItem from="1463581528514" duration="1700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96033000" />
+    <option name="totallyTimeSpent" value="96120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
