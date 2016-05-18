@@ -26,7 +26,7 @@
             <li><a href="http://www.yahoo.com">Yahoo!</a></li>
         </ul>
         <form name="myForm">
-            <input type="text" name="userName" value="hahahahaa">
+            <input type="text" name="userName" value="23462345324">
             <input type="password" name="password">
             <select>
                 <option>1</option>
@@ -36,6 +36,16 @@
             </select>
             <button type="submit">submit</button>
             <button type="reset">reset</button>
+        </form>
+        <form>
+            <input type="text" name="tel1" id="txtTel1" maxlength="3">
+            <input type="text" name="tel2" id="txtTel2" maxlength="3">
+            <input type="text" name="tel3" id="txtTel3" maxlength="4">
+            <input type="email" name ="email">
+            <input type="number" min="0" max="100" step="5" name="count">
+            <input type="text" pattern="\d+" name="count">
+            <button type="submit">submit</button>
+            <input type="submit" formnovalidate name="btnNoValidate" value="Non-validating Submit">
         </form>
     </body>
     <script src="js/jquery.js"></script>

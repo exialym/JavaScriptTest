@@ -169,6 +169,17 @@ var EventUtil = {
         } else {
             return -event.detail * 40;
         }
+    },
+    getClipboardText: function(event){         
+        var clipboardData = (event.clipboardData || window.clipboardData);         
+        return clipboardData.getData("text");     
+    },
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            return event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){             
+            return window.clipboardData.setData("text", value);         
+        }     
     }
 };
 // var link = document.getElementById("link");
@@ -291,14 +302,14 @@ var EventUtil = {
 //     alert(event.data);
 // });
 /*********************contextmenu事件****************/
-EventUtil.addHandler(document, "contextmenu", function(event){
-    event = EventUtil.getEvent(event);
-    EventUtil.preventDefault(event);
-    var menu = document.getElementById("myMenu");
-    menu.style.left = event.pageX + "px";
-    menu.style.top = event.pageY + "px";
-    menu.style.visibility = "visible";
-});
+// EventUtil.addHandler(document, "contextmenu", function(event){
+//     event = EventUtil.getEvent(event);
+//     EventUtil.preventDefault(event);
+//     var menu = document.getElementById("myMenu");
+//     menu.style.left = event.pageX + "px";
+//     menu.style.top = event.pageY + "px";
+//     menu.style.visibility = "visible";
+// });
 /*********************beforeunload事件****************/
 // EventUtil.addHandler(window, "beforeunload", function(event){
 //     event = EventUtil.getEvent(event);
