@@ -143,3 +143,12 @@ if (drawing.getContext){
     image.src = imgURI;
     document.body.appendChild(image);
 }
+/**************************测试内嵌页面跨域***************/
+alert(window.parentVar);//失败
+alert(window.parent.parentVar);
+EventUtil.addHandler(window, "message", function(event){
+    alert(event.origin);
+    alert(event.data);
+    alert(event.source.parentVar);
+    event.source.postMessage("Received!", "http://p2p.wrox.com");
+});
