@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test16_.js" afterPath="$PROJECT_DIR$/test16_.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test17_.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+            <state relative-caret-position="962">
+              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -63,11 +65,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test16_.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test16_.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test16_.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="883">
               <caret line="64" column="51" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test17_.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test17_.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="993">
+              <caret line="62" column="1" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -109,8 +121,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -126,11 +138,12 @@
         <option value="$PROJECT_DIR$/test1_11.js" />
         <option value="$PROJECT_DIR$/test13_.js" />
         <option value="$PROJECT_DIR$/test14_.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/test15_.js" />
         <option value="$PROJECT_DIR$/test.css" />
         <option value="$PROJECT_DIR$/16_.html" />
         <option value="$PROJECT_DIR$/test16_.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/test17_.js" />
       </list>
     </option>
   </component>
@@ -356,12 +369,12 @@
       <workItem from="1463622410755" duration="12045000" />
       <workItem from="1463664828847" duration="2389000" />
       <workItem from="1463810874702" duration="1066000" />
-      <workItem from="1463812902892" duration="3266000" />
+      <workItem from="1463812902892" duration="5161000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115246000" />
+    <option name="totallyTimeSpent" value="117141000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-177" width="1920" height="1200" extended-state="0" />
@@ -398,18 +411,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -713,14 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test12_.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1119">
@@ -757,6 +755,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="883">
           <caret line="64" column="51" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="962">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test17_.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="993">
+          <caret line="62" column="1" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="1" />
           <folding />
         </state>
       </provider>
