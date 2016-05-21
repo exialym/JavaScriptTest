@@ -14,3 +14,12 @@
     height: 300px;
     background-color: #2d672d;
 }
+#dropDiv{
+    height: 100px;
+    width: 100px;
+    background-color: #1f7e9a;
+}
+#frame{
+    height:500px;
+    width:500px;
+}
