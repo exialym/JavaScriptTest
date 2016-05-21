@@ -1,12 +1,14 @@
 /**
  * Created by exialym on 16/5/19.
  */
+/**************************跨文档传递消息***************/
 function send() {
     var iframeWindow = document.getElementById("frame").contentWindow;
     iframeWindow.postMessage("A secret", "*");
 }
 
 var parentVar = 1;
+/**************************原生拖拽***************/
 var dropDiv = document.getElementById("dropDiv");
 var moveText = document.getElementById("moveText");
 EventUtil.addHandler(moveText, "dragstart", function(event){
@@ -28,4 +30,29 @@ EventUtil.addHandler(dropDiv, "drop", function(event){
     var dataTransfer = event.dataTransfer;
     alert(dataTransfer.getData("text"));
 });
+/**************************视频元素***************/
+var player = document.getElementById("player"),
+    btn = document.getElementById("video-btn"),
+    curtime = document.getElementById("curtime"),
+    duration = document.getElementById("duration");
+//
+duration.innerHTML = player.duration;
+//
+EventUtil.addHandler(btn, "click", function(event){
+    if (player.paused){
+        player.play();
+        btn.value = "Pause";
+    } else {
+        player.pause();
+        btn.value = "Play";
+    }
+});
+setInterval(function(){
+curtime.innerHTML = player.currentTime;
+}, 250);
+//只传入格式，并不知道编码的情况下，真返回的是maybe，假返回“”
+alert(player.canPlayType("audio/mpeg"));
+
+//都传入时可能性增加了，真就返回"probably"
+alert(player.canPlayType("audio/mp4; codecs=\"mp4a.40.2\""));
 
