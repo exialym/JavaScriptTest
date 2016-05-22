@@ -1,24 +1,24 @@
 /**
  * Created by exialym on 16/5/21.
  */
-try{
-    //可能出错的代码
-    asdfjsald
-} catch(error){
-    alert("errrrror");
-    alert(error.message);
-}
-alert("out");
-function testFinally(){
-    //return "noTry";
-    try {
-        return 2;
-    } catch (error){
-        return 1;
-    } finally {
-        return 0; }
-}
-alert(testFinally());
+// try{
+//     //可能出错的代码
+//     asdfjsald
+// } catch(error){
+//     alert("errrrror");
+//     alert(error.message);
+// }
+// alert("out");
+// function testFinally(){
+//     //return "noTry";
+//     try {
+//         return 2;
+//     } catch (error){
+//         return 1;
+//     } finally {
+//         return 0; }
+// }
+// alert(testFinally());
 /**********************类型转换错误*******************/
 function concat(str1, str2, str3){
     var result = str1 + str2;
