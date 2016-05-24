@@ -49,17 +49,17 @@
 // }
 // alert(JSON.stringify(testObject));
 /**********************parse解析选项*******************/
-var book = {
-    year: 2011,
-    releaseDate: new Date(2011, 11, 1)
-};
-var jsonText = JSON.stringify(book);
-alert(jsonText);
-var bookCopy = JSON.parse(jsonText, function(key, value){
-    if (key == "releaseDate"){
-        return new Date(value);
-    } else {
-        return value;
-    }
-});
-alert(bookCopy.releaseDate.getFullYear());
+// var book = {
+//     year: 2011,
+//     releaseDate: new Date(2011, 11, 1)
+// };
+// var jsonText = JSON.stringify(book);
+// alert(jsonText);
+// var bookCopy = JSON.parse(jsonText, function(key, value){
+//     if (key == "releaseDate"){
+//         return new Date(value);
+//     } else {
+//         return value;
+//     }
+// });
+// alert(bookCopy.releaseDate.getFullYear());
