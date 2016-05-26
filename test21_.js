@@ -56,28 +56,50 @@
 // data.append("name", "Nicholas");
 // xhr.send(data);
 /**********************超时设定*******************/
+// var xhr = new XMLHttpRequest();
+// xhr.onreadystatechange = function(){
+//     if (xhr.readyState == 4){
+//         try {
+//             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+//                 alert(xhr.responseText);
+//             } else {
+//                 alert("Request was unsuccessful: " + xhr.status);
+//             }
+//         } catch (ex){
+//
+//         }
+//     }
+// };
+// xhr.open("get", "timeout.php", true);
+// xhr.timeout = 1000; //      IE8+
+// xhr.ontimeout = function(){
+//     alert("Request did not return in a second.");
+// };
+// xhr.send(null);
+/**********************overrideMimeType()*******************/
+// var xhr = new XMLHttpRequest();
+// xhr.open("get", "text.php", true);
+// xhr.overrideMimeType("text/xml");
+// xhr.send(null);
+/**********************load事件*******************/
+// var xhr = new XMLHttpRequest();
+// xhr.onload = function(){
+//     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+//         alert(xhr.responseText);
+//     } else {
+//         alert("Request was unsuccessful: " + xhr.status);
+//     }
+// };
+// xhr.open("get", "altevents.php", true);
+// xhr.send(null);
+/**********************progress事件*******************/
 var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function(){
-    if (xhr.readyState == 4){
-        try {
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-                alert(xhr.responseText);
-            } else {
-                alert("Request was unsuccessful: " + xhr.status);
-            }
-        } catch (ex){
-
-        }
+xhr.onprogress = function(event){
+    var divStatus = document.getElementById("highDiv");
+    if (event.lengthComputable) {
+        divStatus.innerHTML = "Received " + event.position + " of " +
+            event.totalSize + " bytes";
     }
 };
-xhr.open("get", "timeout.php", true);
-xhr.timeout = 1000; //      IE8+
-xhr.ontimeout = function(){
-    alert("Request did not return in a second.");
-};
-xhr.send(null);
-/**********************overrideMimeType()*******************/
-var xhr = new XMLHttpRequest();
-xhr.open("get", "text.php", true);
-xhr.overrideMimeType("text/xml");
+xhr.open("get", "img/paypal2.png", true);
 xhr.send(null);
