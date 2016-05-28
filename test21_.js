@@ -93,13 +93,56 @@
 // xhr.open("get", "altevents.php", true);
 // xhr.send(null);
 /**********************progress事件*******************/
-var xhr = new XMLHttpRequest();
-xhr.onprogress = function(event){
-    var divStatus = document.getElementById("highDiv");
-    if (event.lengthComputable) {
-        divStatus.innerHTML = "Received " + event.position + " of " +
-            event.totalSize + " bytes";
+// var xhr = new XMLHttpRequest();
+// xhr.onprogress = function(event){
+//     var divStatus = document.getElementById("highDiv");
+//     if (event.lengthComputable) {
+//         divStatus.innerHTML = "Received " + event.position + " of " +
+//             event.totalSize + " bytes";
+//     }
+// };
+// xhr.open("get", "img/paypal2.png", true);
+// xhr.send(null);
+/**********************跨域资源共享----IE实现CORS*******************/
+// var xdr = new XDomainRequest();
+// xdr.onload = function(){
+//     alert(xdr.responseText);
+// };
+// xdr.onerror = function(){
+//     alert("An error occurred.");
+// };
+// xdr.open("post", "http://www.somewhere-else.com/page/");
+// xdr.contentType = "application/x-www-form-urlencoded";
+// xdr.send("name1=value1&name2=value2");
+/**********************跨域资源共享----其余浏览器实现CORS*******************/
+// var xhr = new XMLHttpRequest();
+// xhr.onreadystatechange = function(){
+//     if (xhr.readyState == 4){
+//         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+//             alert(xhr.responseText);
+//         } else {
+//             alert("Request was unsuccessful: " + xhr.status);
+//         }
+//     } };
+// xhr.open("get", "http://www.somewhere-else.com/page/", true);
+// xhr.send(null);
+/**********************跨域资源共享----跨浏览器实现CORS*******************/
+function createCORSRequest(method, url){
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr){
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined"){
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
     }
-};
-xhr.open("get", "img/paypal2.png", true);
-xhr.send(null);
+    return xhr;
+}
+var request = createCORSRequest("get", "http://www.baidu.com/");
+if (request){
+    request.onload = function(){
+        alert(request.responseText);
+    };
+    request.send();
+}
