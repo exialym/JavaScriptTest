@@ -162,47 +162,49 @@
 // document.body.insertBefore(script, document.body.firstChild);
 
 /**********************基于流的Comet*******************/
-function createStreamingClient(url, progress, finished){
-    var xhr = new XMLHttpRequest(),
-        received = 0;
-    xhr.open("get", url, true);
-    xhr.onreadystatechange = function(){
-        var result;
-        if (xhr.readyState == 3){
-            //     数     数
-            result = xhr.responseText.substring(received);
-            received += result.length;
-            //   progress    数
-            progress(result);
-        } else if (xhr.readyState == 4){
-            finished(xhr.responseText);
-        }
-    };
-    xhr.send(null);
-    return xhr;
-}
-var client = createStreamingClient("streaming.php", function(data){
-                alert("Received: " + data);
-            }, function(data){
-                alert("Done!"+ data);
-            });
+// function createStreamingClient(url, progress, finished){
+//     var xhr = new XMLHttpRequest(),
+//         received = 0;
+//     xhr.open("get", url, true);
+//     xhr.onreadystatechange = function(){
+//         var result;
+//         if (xhr.readyState == 3){
+//             //     数     数
+//             result = xhr.responseText.substring(received);
+//             received += result.length;
+//             //   progress    数
+//             progress(result);
+//         } else if (xhr.readyState == 4){
+//             finished(xhr.responseText);
+//         }
+//     };
+//     xhr.send(null);
+//     return xhr;
+// }
+// var client = createStreamingClient("streaming.php", function(data){
+//                 alert("Received: " + data);
+//             }, function(data){
+//                 alert("Done!"+ data);
+//             });
 /**********************服务器发送事件*******************/
-var source = new EventSource("myevents.php");
-source.onmessage = function(event){
-    var data = event.data;
-};
-source.close();
+// var source = new EventSource("myevents.php");
+// source.onmessage = function(event){
+//     var data = event.data;
+// };
+// source.close();
 /**********************Web Socket*******************/
-var socket = new WebSocket("ws://www.example.com/server.php");
-var message = {
-    time: new Date(),
-    text: "Hello world!",
-    clientId: "asdfp8734rew"
-};
-socket.onmessage = function(event){
-    var data = event.data;
-};
-socket.onclose = function(){
-    alert("Connection closed.");
-};
-socket.send(JSON.stringify(message));
+// var socket = new WebSocket("ws://www.example.com/server.php");
+// var message = {
+//     time: new Date(),
+//     text: "Hello world!",
+//     clientId: "asdfp8734rew"
+// };
+// socket.onmessage = function(event){
+//     var data = event.data;
+// };
+// socket.onclose = function(){
+//     alert("Connection closed.");
+// };
+// socket.send(JSON.stringify(message));
+/**********************XHR的安全问题*******************/
+// xhr.open("get", "example.php", true, "username", "password"); // 不要这样,将密码放在JS中用调试器一下就看到了   
