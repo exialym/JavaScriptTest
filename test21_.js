@@ -127,22 +127,82 @@
 // xhr.open("get", "http://www.somewhere-else.com/page/", true);
 // xhr.send(null);
 /**********************跨域资源共享----跨浏览器实现CORS*******************/
-function createCORSRequest(method, url){
-    var xhr = new XMLHttpRequest();
-    if ("withCredentials" in xhr){
-        xhr.open(method, url, true);
-    } else if (typeof XDomainRequest != "undefined"){
-        xhr = new XDomainRequest();
-        xhr.open(method, url);
-    } else {
-        xhr = null;
-    }
+// function createCORSRequest(method, url){
+//     var xhr = new XMLHttpRequest();
+//     if ("withCredentials" in xhr){
+//         xhr.open(method, url, true);
+//     } else if (typeof XDomainRequest != "undefined"){
+//         xhr = new XDomainRequest();
+//         xhr.open(method, url);
+//     } else {
+//         xhr = null;
+//     }
+//     return xhr;
+// }
+// var request = createCORSRequest("get", "http://www.baidu.com/");
+// if (request){
+//     request.onload = function(){
+//         alert(request.responseText);
+//     };
+//     request.send();
+// }
+/**********************图像Ping*******************/
+// var img = new Image();
+// img.onload = img.onerror = function(){
+//     alert("Done!");
+// };
+// img.src = "http://www.example.com/test?name=Nicholas";
+/**********************JSONP*******************/
+// function handleResponse(response){
+//     alert("You re at IP address " + response.ip + ", which is in " +
+//         response.city + ", " + response.region_name);
+// }
+// var script = document.createElement("script");
+// script.src = "http://freegeoip.net/json/?callback=handleResponse";
+// document.body.insertBefore(script, document.body.firstChild);
+
+/**********************基于流的Comet*******************/
+function createStreamingClient(url, progress, finished){
+    var xhr = new XMLHttpRequest(),
+        received = 0;
+    xhr.open("get", url, true);
+    xhr.onreadystatechange = function(){
+        var result;
+        if (xhr.readyState == 3){
+            //     数     数
+            result = xhr.responseText.substring(received);
+            received += result.length;
+            //   progress    数
+            progress(result);
+        } else if (xhr.readyState == 4){
+            finished(xhr.responseText);
+        }
+    };
+    xhr.send(null);
     return xhr;
 }
-var request = createCORSRequest("get", "http://www.baidu.com/");
-if (request){
-    request.onload = function(){
-        alert(request.responseText);
-    };
-    request.send();
-}
+var client = createStreamingClient("streaming.php", function(data){
+                alert("Received: " + data);
+            }, function(data){
+                alert("Done!"+ data);
+            });
+/**********************服务器发送事件*******************/
+var source = new EventSource("myevents.php");
+source.onmessage = function(event){
+    var data = event.data;
+};
+source.close();
+/**********************Web Socket*******************/
+var socket = new WebSocket("ws://www.example.com/server.php");
+var message = {
+    time: new Date(),
+    text: "Hello world!",
+    clientId: "asdfp8734rew"
+};
+socket.onmessage = function(event){
+    var data = event.data;
+};
+socket.onclose = function(){
+    alert("Connection closed.");
+};
+socket.send(JSON.stringify(message));
