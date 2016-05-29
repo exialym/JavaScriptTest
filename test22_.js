@@ -224,3 +224,32 @@
 // alert(Object.isExtensible(person));//false
 // alert(Object.isSealed(person));//true
 // alert(Object.isFrozen(person));//true
+/**********************Yielding Processes分块处理数据******************/
+// function chunk(array, process, context){
+//     setTimeout(function(){
+//         var item = array.shift();
+//         process.call(context, item);
+//         if (array.length > 0){
+//             setTimeout(arguments.callee, 100);
+//         }
+//     }, 100);
+// }
+// var data = [12,123,1234,453,436,23,23,5,4123,45,346,5634,2234,345,342];
+// function printValue(item){
+//     var div = document.getElementById("myDiv");
+//     div.innerHTML += item + "<br>";
+// }
+// chunk(data, printValue);
+function throttle(method, context) {
+    clearTimeout(method.hahahahaha);
+    method.hahahahaha = setTimeout(function(){
+        method.call(context);
+    }, 100);
+}
+function resizeDiv(){
+    var div = document.getElementById("myDiv");
+    div.innerHTML += "qqqqqq" + "<br>";
+}
+window.onresize = function(){
+    throttle(resizeDiv);
+};

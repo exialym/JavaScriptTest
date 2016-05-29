@@ -56,8 +56,8 @@
       <file leaf-file-name="test22_.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test22_.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="790">
-              <caret line="217" column="0" selection-start-line="217" selection-start-column="3" selection-end-line="225" selection-end-column="40" />
+            <state relative-caret-position="834">
+              <caret line="244" column="22" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -381,12 +381,12 @@
       <workItem from="1464413908435" duration="3909000" />
       <workItem from="1464443421127" duration="158000" />
       <workItem from="1464443583674" duration="9000" />
-      <workItem from="1464499562524" duration="6205000" />
+      <workItem from="1464499562524" duration="6780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136068000" />
+    <option name="totallyTimeSpent" value="136643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-177" width="1920" height="1200" extended-state="0" />
@@ -721,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test21_.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="971">
@@ -777,10 +769,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test22_.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="3" selection-end-line="225" selection-end-column="40" />
+        <state relative-caret-position="834">
+          <caret line="244" column="22" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="22" />
           <folding />
         </state>
       </provider>
