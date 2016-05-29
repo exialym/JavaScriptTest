@@ -180,20 +180,47 @@
 // curriedAdd = curry(add, 5,3);
 // curriedAdd();   //8
 /**********************函数柯里化应用*******************/
-function bind(fn, context){
-    var args = Array.prototype.slice.call(arguments, 2);
-    return function(){
-        var innerArgs = Array.prototype.slice.call(arguments);
-        var finalArgs = args.concat(innerArgs);
-        return fn.apply(context, finalArgs);
-    };
-}
-var handler = {
-    message: "Event handled",
-    handleClick: function(name, event){
-        alert(this.message + ":"+ name + ":"+ event.type);
-    }
-};
-var btn = document.getElementById("myButton");
-//EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler, "myButton"));
-EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler, "myButton"));
+// function bind(fn, context){
+//     var args = Array.prototype.slice.call(arguments, 2);
+//     return function(){
+//         var innerArgs = Array.prototype.slice.call(arguments);
+//         var finalArgs = args.concat(innerArgs);
+//         return fn.apply(context, finalArgs);
+//     };
+// }
+// var handler = {
+//     message: "Event handled",
+//     handleClick: function(name, event){
+//         alert(this.message + ":"+ name + ":"+ event.type);
+//     }
+// };
+// var btn = document.getElementById("myButton");
+// //EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler, "myButton"));
+// EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler, "myButton"));
+/**********************不可拓展对象******************/
+// var person = { name: "Nicholas" };
+// Object.preventExtensions(person);
+// person.age = 29;
+// alert(person.age); //undefined
+// alert(Object.isExtensible(person)); //false
+// person.name = "hahah";
+// alert(person.name); //hahah
+/**********************密封对象******************/
+// var person = { name: "Nicholas" };
+// Object.seal(person);
+// person.age = 29;
+// alert(person.age); //undefined
+// delete person.name;
+// alert(person.name); //"Nicholas"
+// alert(Object.isExtensible(person)); //false
+// alert(Object.isSealed(person));     //true
+/**********************冻结对象******************/
+// var person = { name: "Nicholas" };
+// Object.freeze(person);
+// person.age = 29; alert(person.age); //undefined
+// delete person.name; alert(person.name); //"Nicholas"
+// person.name = "Greg"; alert(person.name); //"Nicholas"
+//
+// alert(Object.isExtensible(person));//false
+// alert(Object.isSealed(person));//true
+// alert(Object.isFrozen(person));//true

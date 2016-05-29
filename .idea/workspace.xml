@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test22_.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test22_.js" afterPath="$PROJECT_DIR$/test22_.js" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +56,8 @@
       <file leaf-file-name="test22_.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test22_.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="944">
-              <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="82" />
+            <state relative-caret-position="790">
+              <caret line="217" column="0" selection-start-line="217" selection-start-column="3" selection-end-line="225" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -383,12 +381,12 @@
       <workItem from="1464413908435" duration="3909000" />
       <workItem from="1464443421127" duration="158000" />
       <workItem from="1464443583674" duration="9000" />
-      <workItem from="1464499562524" duration="5688000" />
+      <workItem from="1464499562524" duration="6205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135551000" />
+    <option name="totallyTimeSpent" value="136068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-177" width="1920" height="1200" extended-state="0" />
@@ -781,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test22_.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="944">
-          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="82" />
+        <state relative-caret-position="790">
+          <caret line="217" column="0" selection-start-line="217" selection-start-column="3" selection-end-line="225" selection-end-column="40" />
           <folding />
         </state>
       </provider>
