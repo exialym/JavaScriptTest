@@ -174,11 +174,67 @@
 // var book = globalStorage[location.host ].getItem("book");
 // alert(book);
 /**********************localStorage对象******************/
-localStorage.setItem("name", "Nicholas");
-localStorage.book = "Professional JavaScript";
-var name = localStorage.getItem("name");
-var book = localStorage.book;
-alert(name);
-EventUtil.addHandler(document, "storage", function(event){
-    alert("Storage changed for " + event.domain);
-});
+// localStorage.setItem("name", "Nicholas");
+// localStorage.book = "Professional JavaScript";
+// var name = localStorage.getItem("name");
+// var book = localStorage.book;
+// alert(name);
+// EventUtil.addHandler(document, "storage", function(event){
+//     alert("Storage changed for " + event.domain);
+// });
+/**********************IndexedDB******************/
+var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
+const customerData = [
+    { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
+    { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
+];
+var request, database;
+request = indexedDB.open("my1",4);
+request.onerror = function(event){
+    alert("Something bad happened while trying to open: " +
+        event.target.errorCode);
+};
+request.onsuccess = function(event){
+    database = event.target.result;
+    //setVersion();
+};
+request.onupgradeneeded = function (event) {
+    var db = event.target.result;
+
+    // Create an objectStore to hold information about our customers. We're
+    // going to use "ssn" as our key path because it's guaranteed to be
+    // unique - or at least that's what I was told during the kickoff meeting.
+    var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+
+    // Create an index to search customers by name. We may have duplicates
+    // so we can't use a unique index.
+    objectStore.createIndex("name", "name", { unique: false });
+
+    // Create an index to search customers by email. We want to ensure that
+    // no two customers have the same email, so use a unique index.
+    objectStore.createIndex("email", "email", { unique: true });
+
+    // Use transaction oncomplete to make sure the objectStore creation is
+    // finished before adding data into it.
+    objectStore.transaction.oncomplete = function(event) {
+        // Store values in the newly created objectStore.
+        var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
+        for (var i in customerData) {
+            customerObjectStore.add(customerData[i]);
+        }
+    };
+};
+function setVersion() {
+    if (database.version != "1.0"){
+        request = database.setVersion("1.0");
+        request.onerror = function(event){
+            alert("Something bad happened while trying to set version: " +
+                event.target.errorCode);
+        };
+        request.onsuccess = function(event){
+            alert("Database initialization complete. Database name: " + database.name + ", Version: " + database.version);
+        };
+    } else {
+        alert("Database already initialized. Database name: " + database.name + ", Version: " + database.version);
+    }
+}
