@@ -23,3 +23,13 @@
     height:500px;
     width:500px;
 }
+#status{
+    height:20px;
+    background-color: #e4b9b9;
+    width:0px;
+}
+#droptarget{
+    height:20px;
+    color:#fff;
+    background-color: #8b211e;
+}

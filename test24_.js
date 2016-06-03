@@ -64,30 +64,30 @@
 //     body.innerHTML = "Hello world!";
 // }
 /**********************Duff装置******************/
-var iterations = Math.floor(values.length / 8);
-var leftover = values.length % 8;
-var i = 0;
-if (leftover > 0){
-    do {
-        process(values[i++]);
-    } while (--leftover > 0);
-}
-do {
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-    process(values[i++]);
-} while (--iterations > 0);
+// var iterations = Math.floor(values.length / 8);
+// var leftover = values.length % 8;
+// var i = 0;
+// if (leftover > 0){
+//     do {
+//         process(values[i++]);
+//     } while (--leftover > 0);
+// }
+// do {
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+//     process(values[i++]);
+// } while (--iterations > 0);
 /**********************使用HTMLCollection时要小心******************/
-var images = document.getElementsByTagName("img"),
-    image,
-    i,
-    len;
-for (i=0, len=images.length; i < len; i++){
-    image = images[i];
-    //其他操作
-}
+// var images = document.getElementsByTagName("img"),
+//     image,
+//     i,
+//     len;
+// for (i=0, len=images.length; i < len; i++){
+//     image = images[i];
+//     //其他操作
+// }
