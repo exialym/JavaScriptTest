@@ -229,3 +229,19 @@ function handleEvent(event){
 EventUtil.addHandler(droptarget, "dragenter", handleEvent);
 EventUtil.addHandler(droptarget, "dragover", handleEvent);
 EventUtil.addHandler(droptarget, "drop", handleEvent);
+/**********************Web Timing ******************/
+alert(window.performance.timing.domainLookupStart);
+/**********************Worker ******************/
+var worker = new Worker("stufftodo.js");
+worker.postMessage({
+    type: "command",
+    message: "start! "
+});
+worker.onmessage = function(event){
+    var data = event.data;
+}
+worker.onerror = function(event){
+    console.log("ERROR: " + event.filename + " (" + event.lineno + "): " +
+        event.message);
+};
+worker.terminate();

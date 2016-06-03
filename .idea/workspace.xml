@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bc1c4e6-ed65-4fe5-815f-30205f8b0f4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test25_.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.css" afterPath="$PROJECT_DIR$/test.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test24_.js" afterPath="$PROJECT_DIR$/test24_.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test25_.js" afterPath="$PROJECT_DIR$/test25_.js" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,8 +106,8 @@
       <file leaf-file-name="test25_.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test25_.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="226" column="5" selection-start-line="209" selection-start-column="4" selection-end-line="226" selection-end-column="5" />
+            <state relative-caret-position="585">
+              <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -241,7 +237,6 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -399,12 +394,12 @@
       <workItem from="1464788533159" duration="2623000" />
       <workItem from="1464843896473" duration="6786000" />
       <workItem from="1464917748245" duration="36000" />
-      <workItem from="1464917824546" duration="13088000" />
+      <workItem from="1464917824546" duration="15042000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173593000" />
+    <option name="totallyTimeSpent" value="175547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
@@ -799,8 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test25_.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="226" column="5" selection-start-line="209" selection-start-column="4" selection-end-line="226" selection-end-column="5" />
+        <state relative-caret-position="585">
+          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="19" />
           <folding />
         </state>
       </provider>
