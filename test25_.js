@@ -199,49 +199,50 @@ EventUtil.addHandler(droptarget, "dragover", handleEvent);
 EventUtil.addHandler(droptarget, "drop", handleEvent);
 
 /**********************拖放上传文件 ******************/
-var droptarget = document.getElementById( "droptarget");
-function handleEvent(event){
-    var info = "",
-        output = document.getElementById("myDiv"),
-        files,
-        i,
-        len;
-    EventUtil.preventDefault(event);
-    if (event.type == "drop"){
-        data = new FormData();
-        files = event.dataTransfer.files;
-        i = 0;
-        len = files.length;
-        while (i < len){
-            data.append("file" + i, files[i]);
-            i++;
-        }
-        xhr = new XMLHttpRequest();
-        xhr.open("post", "hahaha.jsp", true);
-        xhr.onreadystatechange = function(){
-            if (xhr.readyState == 4){
-                alert(xhr.responseText);
-            }
-        };
-        xhr.send(data);
-    }
-}
-EventUtil.addHandler(droptarget, "dragenter", handleEvent);
-EventUtil.addHandler(droptarget, "dragover", handleEvent);
-EventUtil.addHandler(droptarget, "drop", handleEvent);
+// var droptarget = document.getElementById( "droptarget");
+// function handleEvent(event){
+//     var info = "",
+//         output = document.getElementById("myDiv"),
+//         files,
+//         i,
+//         len;
+//     EventUtil.preventDefault(event);
+//     if (event.type == "drop"){
+//         data = new FormData();
+//         files = event.dataTransfer.files;
+//         i = 0;
+//         len = files.length;
+//         while (i < len){
+//             data.append("file" + i, files[i]);
+//             i++;
+//         }
+//         xhr = new XMLHttpRequest();
+//         xhr.open("post", "hahaha.jsp", true);
+//         xhr.onreadystatechange = function(){
+//             if (xhr.readyState == 4){
+//                 alert(xhr.responseText);
+//             }
+//         };
+//         xhr.send(data);
+//     }
+// }
+// EventUtil.addHandler(droptarget, "dragenter", handleEvent);
+// EventUtil.addHandler(droptarget, "dragover", handleEvent);
+// EventUtil.addHandler(droptarget, "drop", handleEvent);
 /**********************Web Timing ******************/
-alert(window.performance.timing.domainLookupStart);
+//alert(window.performance.timing.domainLookupStart);
 /**********************Worker ******************/
-var worker = new Worker("stufftodo.js");
+var worker = new Worker("Web_Worker.js");
 worker.postMessage({
     type: "command",
     message: "start! "
 });
 worker.onmessage = function(event){
     var data = event.data;
+    alert(data);
 }
 worker.onerror = function(event){
     console.log("ERROR: " + event.filename + " (" + event.lineno + "): " +
         event.message);
 };
-worker.terminate();
+//worker.terminate();
